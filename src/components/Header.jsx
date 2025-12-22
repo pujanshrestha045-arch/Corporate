@@ -7,6 +7,14 @@ function Header() {
     const [isDark, setIsDark] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
 
+        const scrollToSection = (id) => {
+        const element = document.getElementById(id)
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" })
+        }
+        setIsOpen(false);
+    }
+
     useEffect(() => {
         const isDarkMode = document.documentElement.classList.contains("dark")
         setIsDark(isDarkMode)
@@ -38,7 +46,7 @@ function Header() {
                                 <a
                                     key={link.name}
                                     href={link.href}
-                                    className='text-sm scroll-smooth'>
+                                    className='text-sm'>
                                     {link.name}
                                 </a>
                             ))}
