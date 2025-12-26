@@ -1,6 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 function Testimonials() {
+  const [testimonials, setTestimonials] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  const fetchTestimonials = async () => {
+    try {
+      const response = await fetch()
+      if(!response.ok) throw new Error ("Failed to fetch testimonials")
+        const data = await response.json()
+      setTestimonials(data)  
+    }
+    catch (err) {
+      setError("An Error Occurred")
+    }
+    finally{
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchTestimonials()
+  }, [])
+
   if(loading)
     return (
       <>
