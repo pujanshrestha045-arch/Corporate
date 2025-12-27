@@ -33,11 +33,11 @@ function Header() {
 
     return (
         <>
-            <nav className="fixed top-0 left-0 right-0 z-50 border-b">
+            <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 items-center justify-between">
                         <div className="flex items-center">
-                            <a href="#" className='text-xl font-semibold'>Corporate</a>
+                            <a href="#" className='text-xl font-semibold text-foreground'>Corporate</a>
                         </div>
 
                         {/* Desktop Navigation */}
@@ -46,12 +46,12 @@ function Header() {
                                 <a
                                     key={link.name}
                                     href={link.href}
-                                    className='text-sm'>
+                                    className='text-sm text-muted-foreground hover:text-foreground'>
                                     {link.name}
                                 </a>
                             ))}
                             <button onClick={toggleTheme} aria-label='Toggle theme'>
-                                {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+                                {isDark ? <Sun className="h-5 w-5 text-foreground" /> : <Moon className="h-5 w-5 text-foreground" />}
                             </button>
                         </div>
 
@@ -61,20 +61,20 @@ function Header() {
                                 {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
                             </button>
                             <button onClick={() => setIsOpen(!isOpen)} aria-label='Toggle menu'>
-                                {isOpen ? <X className='h-5 w-5' /> : <Menu className='h-5 w-5' />}
+                                {isOpen ? <X className='h-5 w-5 text-foreground' /> : <Menu className='h-5 w-5 text-foreground' />}
                             </button>
                         </div>
                     </div>
 
                     {/* Mobile Menu */}
                     {isOpen && (
-                        <div className="border-t py-4 md:hidden">
+                        <div className="border-t border-border py-4 md:hidden">
                             <div className="flex flex-col gap-4">
                                 {navLinks.map((link) => (
                                     <a
                                         key={link.name}
                                         href={link.href}
-                                        className='text-sm scroll-smooth'>
+                                        className='text-sm text-muted-foreground hover:text-foreground'>
                                         {link.name}
                                     </a>
                                 ))}

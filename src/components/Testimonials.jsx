@@ -7,15 +7,15 @@ function Testimonials() {
 
   const fetchTestimonials = async () => {
     try {
-      const response = await fetch()
-      if(!response.ok) throw new Error ("Failed to fetch testimonials")
-        const data = await response.json()
-      setTestimonials(data)  
+      const response = await fetch('https://jsonplaceholder.typicode.com/comments?_limit=3')
+      if (!response.ok) throw new Error("Failed to fetch testimonials")
+      const data = await response.json()
+      setTestimonials(data)
     }
     catch (err) {
       setError("An Error Occurred")
     }
-    finally{
+    finally {
       setLoading(false)
     }
   }
@@ -24,30 +24,63 @@ function Testimonials() {
     fetchTestimonials()
   }, [])
 
-  if(loading)
+  if (loading) {
     return (
       <>
         <section id='testimonials' className='py-24 sm:py-32'>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
-              <h2 className='text-balance text-3xl font-semibold sm:text-4xl'>Client Success Stories</h2>
-              <p className='mt-4 text-pretty text-lg'>Hear from the people we've helped transform</p>
+              <h2 className='text-balance text-3xl font-semibold sm:text-4xl text-foreground'>Client Success Stories</h2>
+              <p className='mt-4 text-muted-foreground text-pretty text-lg'>Hear from the people we've helped transform</p>
             </div>
-          </div>
-          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {[...Array(3)].map((_, i) => (
-              <div key={i} className="p-8 border rounded-lg shadow-lg">
-                <div className="h-20 w-full bg-gray-300"></div>
-                <div className="mt-6 flex items-center gap-4">
-                  <div className="h-12 w-12 rounded-full bg-gray-300"></div>
-                  <div className="h-5 w-24 bg-gray-300"></div>
-                  <div className="mt-2 h-5 w-32 bg-gray-300"></div>
+
+            <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {[...Array(3)].map((_, i) => (
+                <div key={i} className="p-8 border rounded-lg shadow-lg">
+                  <div className="h-20 w-full bg-gray-300"></div>
+                  <div className="mt-6 flex items-center gap-4">
+                    <div className="h-12 w-12 rounded-full bg-gray-300"></div>
+                    <div className="h-5 w-24 bg-gray-300"></div>
+                    <div className="mt-2 h-5 w-32 bg-gray-300"></div>
+                  </div>
                 </div>
-              </div>
-            ) )}
+              ))}
+            </div>
           </div>
         </section>
       </>
+    )
+  }
+
+
+  if (error) {
+    return <p className="text-center text-red-500 mt-10">{error}</p>
+  }
+
+  return (
+    <section id='testimonials' className='py-24 sm:py-32 bg-secondary'>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className='text-balance text-3xl font-semibold sm:text-4xl text-foreground'>Client Success Stories</h2>
+          <p className='mt-4 text-muted-foreground text-pretty text-lg'>Hear from the people we've helped transform</p>
+        </div>
+
+        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {testimonials.map((t) => (
+            <div key={t.id} className="p-8 border rounded-lg shadow-lg flex flex-col">
+              <div className="flex-1 w-full text-muted-foreground p-4 rounded">{t.body}</div>
+              <div className="mt-6 flex items-center gap-4">
+                <div className="h-12 w-12 rounded-full bg-gray-300"></div>
+                <div>
+                  <p className="font-semibold">{t.name}</p>
+                  <p className="text-sm text-muted-foreground">{t.email}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   )
 }
 
