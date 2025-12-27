@@ -54,10 +54,10 @@ const iconMap = {
   
     return (
     <>
-      <section id='services' className='py-24 sm:py-32 bg-muted'>
+      <section id='services' className='py-24 sm:py-32 bg-primary text-primary-foreground'>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
-                <h2 className="text-balance text-3xl font-semibold sm:text-4xl text-foreground">
+                <h2 className="text-balance text-3xl font-semibold sm:text-4xl ">
                     Our Services
                 </h2>
                 <p className='mt-4 text-pretty text-lg text-muted-foreground'>
@@ -72,7 +72,7 @@ const iconMap = {
                             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary text-primary-foreground">
                                 <Icon className="h-6 w-6" />
                             </div>
-                            <h3 className='mt-6 text-xl font-semibold text-foreground'>{service.title}</h3>
+                            <h3 className='mt-6 text-xl font-semibold text-primary-foreground'>{service.title}</h3>
                             <p className='mt-4 text-muted-foreground'>{service.description}</p>
                         </div>
                     )
