@@ -67,7 +67,7 @@ function Testimonials() {
 
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t) => (
-            <div key={t.id} className="p-8 border rounded-lg shadow-lg flex flex-col">
+            <div key={t.id} className="p-8 border border-border bg-accent rounded-lg shadow-lg flex flex-col">
               <div className="flex-1 w-full text-muted-foreground p-4 rounded">{t.body}</div>
               <div className="mt-6 flex items-center gap-4">
                 <div className="h-12 w-12 rounded-full bg-gray-300"></div>
